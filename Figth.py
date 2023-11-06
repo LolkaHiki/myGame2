@@ -1,8 +1,30 @@
 import random
 import time
+
 import Enemy
 import Inventory
 import main
+
+def show_info(attacker, defender, attack_damage, defender_healing):
+    """Выводит информацию о бое."""
+
+    # Выводим информацию об атакующем
+
+    print(f"{attacker.name} атакует {defender.name}.")
+    print(f"Урон {attacker.name}: {attack_damage}")
+
+    # Выводим информацию о защищающемся
+
+    print(f"Здоровье {defender.name}: {defender_healing}")
+
+    # Выводим результат атаки
+
+    if defender_healing <= 0:
+        print(f"{defender.name} побежден!")
+    else:
+        print(f"{defender.name} остался жив.")
+
+
 while battle == 1:
 
     print("Выберите действие")
@@ -10,27 +32,7 @@ while battle == 1:
     boi = int(input())
 
     if boi == 1:
-        def dice(sides=6):
-            return random.randint(1, sides)
-
-
-        def fight(attack_damage, defender_healing, attack_name, defender_name):
-            cube = dice(10)
-            if cube == 1:
-                print(f"{attack_name} промахнулся")
-                time.sleep(2)
-            elif cube == 10:
-                defender_healing -= attack_damage * 2
-                print(f"{defender_name} осталось {defender_healing} здоровья *критический урон*")
-                time.sleep(2)
-            else:
-                defender_healing -= attack_damage
-                print(f"{defender_name} осталось {defender_healing} здоровья")
-                time.sleep(2)
-            return defender_healing
-
-
-
+        show_info(main.name, Enemy.enemy.name, main.attack_user, Enemy.enemy.health)
         if main.healing_user > 0 and Enemy.enemy.health > 0:
             Enemy.enemy.health = fight(main.attack_user, Enemy.enemy.health, main.name, Enemy.enemy.name)
             healing_user = fight(Enemy.enemy.attack, main.healing_user, Enemy.enemy.name, main.name)

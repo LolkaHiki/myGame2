@@ -1,7 +1,8 @@
 import random
 import time
-import Inventory
 import Enemy
+import Inventory
+import map_and_run
 
 print("Start game")
 
@@ -9,17 +10,11 @@ print("Введите имя персонажа")
 name = input()
 # Имя гг
 
-print("Выберите уровень сложности")
-print ("1 - легкий      2 - средний         3 - сложный")
-lvl_game = int(input())
-# Уровень сложности !!!Нужно переделать !!!невозможно выжить!!! !!!
-
 
 attack_user = 10
 healing_user = 100
 # Базовые характеристики гг
 # Надо сделать систему брони %-ную
-
 
 # ПИВО
 beer = Inventory.Item("Пиво", "Восстанавливает 10 здоровья, но точность уменьшается", 1, 10)
@@ -31,7 +26,7 @@ Inventory.inventory.add_item(beer)
 # Случайный выбор противника
 def random_enemy():
     # Список доступных противников
-    enemies = [Enemy.Goblin, Enemy.Troll, Enemy.Dragon, Enemy.Zombie, Enemy.Dvorf]
+    enemies = [Enemy.goblin, Enemy.troll, Enemy.dragon, Enemy.zombie, Enemy.dvorf]
 
     # Случайный выбор противника
     enemy = random.choice(enemies)
@@ -47,6 +42,7 @@ print(f"Вы встретили монстра - {enemy.name}")
 print("БОЙ")
 time.sleep(2)
 battle = 1
+
 
 while battle == 1:
 
@@ -109,6 +105,6 @@ while battle == 1:
 
 
 # Надо запихнуть священный крест, который будет убивать врагов моментально, но ограничить кол-во использования
-
+#
 # Что бы это работало как надо пива!!!
-# Если интерес останется, можно перенести этот код на C# или С++, С# - unity. Как вариант, можно будет за тлить платформы
+# Если интерес останется, можно перенести этот код на C# или С++, С# - unity. Как вариант, можно будет залить платформы

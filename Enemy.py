@@ -1,40 +1,38 @@
 # Противники
-import main
-
 
 class Goblin(object):
     def __init__(self):
         self.name = "Гоблин"
         self.description = "Маленький, но злобный монстр"
-        self.attack = 5 * main.lvl_game
+        self.attack = 5
         self.health = 10
 
 class Troll(object):
     def __init__(self):
         self.name = "Тролль"
         self.description = "Большой и сильный монстр"
-        self.attack = 10 * main.lvl_game
+        self.attack = 10
         self.health = 35
 
 class Dragon(object):
     def __init__(self):
         self.name = "Дракон"
         self.description = "Огненное чудовище"
-        self.attack = 20 * main.lvl_game
+        self.attack = 20
         self.health = 50
 
 class Zombie(object):
     def __init__(self):
         self.name = "Зомби"
         self.description = "Слабый противник, но не похоже, что он собирается сдаваться"
-        self.attack = 5 * main.lvl_game
+        self.attack = 5
         self.health = 25
 
 class Dvorf(object):
     def __init__(self):
         self.name = "Дворф"
         self.description = "Главный любитель пива. За пиво и двор - может убить каждого"
-        self.attack = 7 * main.lvl_game
+        self.attack = 7
         self.health = 30
         self.is_drunk = False
 
