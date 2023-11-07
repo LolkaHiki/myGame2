@@ -1,4 +1,5 @@
-
+import random
+# import numpy
 def create_map():
     """Создаёт карту."""
 
@@ -55,37 +56,106 @@ def create_map():
 
     return rooms
 
-matrix = [[ room_1,  25, 90, 74],
-["Sachin", 410, 87.50, 130]
-[56, "Abhinay", 253, 471]
+def generate_map(size):
+  """
+  Создает карту размером size x size.
+
+  Args:
+    size: Размер карты.
+
+  Returns:
+    Карта размером size x size.
+  """
+
+  map = [[0 for i in range(size)] for j in range(size)]
+
+  # Заполняем матрицу числами 0(Пустая комнаята)
+
+  for i in range(size):
+    for j in range(size):
+      map[i][j] = 0
+
+  # Заполняем матрицу числами 2(Лут)
+  count_two = int(size * size * 0.15)
+  for i in range(count_two):
+    i = random.randint(0, size - 1)
+    j = random.randint(0, size - 1)
+    map[i][j] = 2
+
+  # Заполняем матрицу числами 1 (Враги)
+  count_one = int(size * size * 0.2)
+  for i in range(count_one):
+      i = random.randint(0, size - 1)
+      j = random.randint(0, size - 1)
+      map [i][j] = 1
+
+  # Заполняем матрицу числом 3 (Выход с уровня)
+  i = random.randint(0, size - 1)
+  j = random.randint(0, size - 1)
+  map[i][j] = 3
+
+  # Заполняем матрицу числом 4 (Фонтан со священной водой)
+  i = random.randint(0, size - 1)
+  j = random.randint(0, size - 1)
+  map[i][j] = 4
+
+  return map
+map = generate_map(8)
+
+for i in range(len(map)):
+    print(map[i])
+
+print('')
+
+mapVision = [['#' for i in range(8)] for j in range(8)]
+
+for i in range(len(mapVision)):
+    for j in range(len(mapVision[i])):
+        if map[i][j] == 1:
+            print('M\t', end="")
+        else:
+            print('#\t', end="")
+    print(' ')
+    # print(mapVision[i])
+
+# print(mapVision)
 
 
-def move(current_room, direction):
-    """Перемещает игрока в другую комнату."""
 
-    # Получаем список комнат
 
-    rooms = create_map()
 
-    # Проверяем, существует ли указанная комната
+def map_move_payers(map_vision, case_players, case_enemy, case_loote, case_exit, case_sacred_fountain):
+    map_vision = numpy (map)
 
-    if direction not in rooms[current_room]["exits"]:
-        print("Вы не можете пойти в эту сторону.")
-        return
+    return map_vision
 
-    # Перемещаем игрока в другую комнату
 
-    # global current_room
-    # current_room = rooms[current_room]["exits"][direction]
-
-    # Избавляемся от глобальной переменной current_room и передаем ее в функцию в качестве параметра
-
-    current_room = rooms[current_room]["exits"][direction]
-
-    # Выводим описание комнаты
-
-    print(f"Вы находитесь в комнате {current_room['name']}.\n{current_room['description']}")
-
+ # def move(current_room, direction):
+ #    """Перемещает игрока в другую комнату."""
+ #
+ #    # Получаем список комнат
+ #
+ #    rooms = create_map()
+ #
+ #    # Проверяем, существует ли указанная комната
+ #
+ #    if direction not in rooms[current_room]["exits"]:
+ #        print("Вы не можете пойти в эту сторону.")
+ #        return
+ #
+ #    # Перемещаем игрока в другую комнату
+ #
+ #    # global current_room
+ #    # current_room = rooms[current_room]["exits"][direction]
+ #
+ #    # Избавляемся от глобальной переменной current_room и передаем ее в функцию в качестве параметра
+ #
+ #    current_room = rooms[current_room]["exits"][direction]
+ #
+ #    # Выводим описание комнаты
+ #
+ #    print(f"Вы находитесь в комнате {current_room['name']}.\n{current_room['description']}")
+ #
 
 def main():
     """Основная функция."""

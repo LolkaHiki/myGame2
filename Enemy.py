@@ -1,3 +1,4 @@
+
 # Противники
 
 class Goblin(object):
