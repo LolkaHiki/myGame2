@@ -72,11 +72,9 @@ for i in range(len(mapVision)):
         else:
             print('#\t', end="")
     print(' ')
-    # print(mapVision[i])
 
-# print(mapVision)
 
-def move(x, y):
+def move_player(x, y):
     """
     Перемещает игрока на точку (x, y).
 
